@@ -52,7 +52,7 @@
                                 <span class="text-secondary fw-medium">{{ $buku->penulis }}</span>
                             </td>
                             <td>
-                                <span class="badge bg-purple-subtle text-del-purple bg-del-soft rounded-pill px-3 py-1 fw-semibold">
+                                <span class="badge badge-soft-blue rounded-pill px-3 py-1 fw-semibold">
                                     {{ $buku->kategori->nama_kategori ?? 'Tanpa Kategori' }}
                                 </span>
                             </td>

@@ -49,7 +49,7 @@
         <div class="col-md-4">
             <div class="card card-modern p-3">
                 <div class="d-flex align-items-center gap-3">
-                    <div class="p-3 rounded-4 bg-del-soft text-del-purple d-flex align-items-center justify-content-center" style="width: 54px; height: 54px;">
+                    <div class="p-3 rounded-4 bg-secondary-subtle text-secondary-emphasis d-flex align-items-center justify-content-center" style="width: 54px; height: 54px;">
                         <i class="bi bi-people-fill fs-4"></i>
                     </div>
                     <div>

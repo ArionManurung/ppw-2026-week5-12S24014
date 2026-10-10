@@ -36,7 +36,7 @@
                         <tr>
                             <td class="ps-4 fw-bold text-muted">{{ $kategoris->firstItem() + $index }}</td>
                             <td>
-                                <span class="badge bg-light text-del-purple border font-monospace px-2 py-1 fs-6">
+                                <span class="badge bg-light text-dark border font-monospace px-2 py-1 fs-6">
                                     {{ $kategori->kode_kategori }}
                                 </span>
                             </td>

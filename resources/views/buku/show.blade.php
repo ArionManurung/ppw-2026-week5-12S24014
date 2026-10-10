@@ -20,7 +20,7 @@
                             </p>
 
                             <div class="d-flex flex-wrap gap-2 mb-4">
-                                <span class="badge bg-del-soft text-del-purple rounded-pill px-3 py-2 fw-semibold">
+                                <span class="badge badge-soft-blue rounded-pill px-3 py-2 fw-semibold">
                                     <i class="bi bi-tag me-1"></i> {{ $buku->kategori->nama_kategori ?? 'Tanpa Kategori' }}
                                 </span>
                                 @if($buku->stok > 0)
