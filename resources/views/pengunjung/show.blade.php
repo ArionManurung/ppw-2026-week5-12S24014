@@ -2,22 +2,23 @@
     <x-slot:title>Detail Kunjungan: {{ $pengunjung->nama }}</x-slot:title>
 
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card border-0 shadow-sm rounded-3">
-                <div class="card-header card-del-header py-3 d-flex justify-content-between align-items-center">
-                    <h5 class="card-title mb-0 fw-bold">
-                        <i class="bi bi-person-badge me-2"></i>Rincian Log Kunjungan Pemustaka
-                    </h5>
-                    <span class="badge bg-light text-dark font-monospace">ID: #{{ $pengunjung->id }}</span>
+        <div class="col-lg-8">
+            <div class="card card-modern overflow-hidden">
+                <div class="card-del-header d-flex justify-content-between align-items-center">
+                    <div class="d-flex align-items-center gap-2">
+                        <i class="bi bi-person-badge fs-5"></i>
+                        <h5 class="card-title mb-0 fw-bold">Rincian Log Kunjungan</h5>
+                    </div>
+                    <span class="badge bg-white text-del-purple font-monospace px-3 py-1 rounded-pill">ID: #{{ $pengunjung->id }}</span>
                 </div>
-                <div class="card-body p-4">
-                    <div class="d-flex align-items-center gap-3 mb-4 pb-3 border-bottom">
-                        <div class="p-3 rounded-circle bg-del-purple text-white">
+                <div class="card-body p-4 p-md-5">
+                    <div class="d-flex align-items-center gap-3 mb-4 pb-4 border-bottom">
+                        <div class="p-3 rounded-circle bg-del-soft text-del-purple d-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
                             <i class="bi bi-person-fill fs-2"></i>
                         </div>
                         <div>
                             <h3 class="fw-bold text-dark mb-0">{{ $pengunjung->nama }}</h3>
-                            <div class="text-muted">
+                            <div class="text-muted small">
                                 <code>{{ $pengunjung->nim_nik }}</code> &bull; {{ $pengunjung->institusi_prodi ?? 'Umum' }}
                             </div>
                         </div>
@@ -54,14 +55,14 @@
                         @endif
                     </div>
 
-                    <div class="d-flex justify-content-between align-items-center">
-                        <a href="{{ route('pengunjung.index') }}" class="btn btn-outline-secondary">
-                            <i class="bi bi-arrow-left me-1"></i> Kembali ke Daftar Log
+                    <div class="d-flex justify-content-between align-items-center pt-2 border-top">
+                        <a href="{{ route('pengunjung.index') }}" class="btn btn-outline-secondary rounded-pill px-4">
+                            <i class="bi bi-arrow-left me-1"></i> Kembali ke Riwayat
                         </a>
                         <form action="{{ route('pengunjung.destroy', $pengunjung) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data log ini?')">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-outline-danger">
+                            <button type="submit" class="btn btn-outline-danger rounded-pill px-3">
                                 <i class="bi bi-trash me-1"></i> Hapus Catatan Log
                             </button>
                         </form>
