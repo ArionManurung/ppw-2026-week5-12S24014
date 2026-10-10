@@ -36,6 +36,11 @@
                             <i class="bi bi-tags me-1"></i> Kategori
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('pengunjung.*') ? 'active fw-bold' : '' }}" href="{{ route('pengunjung.index') }}">
+                            <i class="bi bi-person-lines-fill me-1"></i> Log Pengunjung
+                        </a>
+                    </li>
                 </ul>
                 <span class="navbar-text text-white-50 small">
                     Institut Teknologi Del | Modul 5 PPW

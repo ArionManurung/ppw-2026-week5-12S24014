@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Kategori;
 use App\Models\Buku;
+use App\Models\Pengunjung;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -29,5 +30,8 @@ class DatabaseSeeder extends Seeder
                 'kategori_id' => $createdKategori->id,
             ]);
         }
+
+        // Buat 15 mock data pengunjung perpustakaan
+        Pengunjung::factory(15)->create();
     }
 }
