@@ -73,6 +73,11 @@ erDiagram
 | `GET` | `/kategori/{kategori}/edit` | `kategori.edit` | `KategoriController@edit` | Formulir edit kategori |
 | `PUT/PATCH` | `/kategori/{kategori}` | `kategori.update` | `KategoriController@update` | Simpan pembaruan kategori |
 | `DELETE` | `/kategori/{kategori}` | `kategori.destroy` | `KategoriController@destroy` | Hapus kategori |
+| `GET` | `/pengunjung` | `pengunjung.index` | `PengunjungController@index` | Daftar & ringkasan statistik log pengunjung |
+| `GET` | `/pengunjung/create` | `pengunjung.create` | `PengunjungController@create` | Formulir buku tamu kehadiran pengunjung |
+| `POST` | `/pengunjung` | `pengunjung.store` | `PengunjungController@store` | Simpan catatan kehadiran ke basis data |
+| `GET` | `/pengunjung/{pengunjung}` | `pengunjung.show` | `PengunjungController@show` | Rincian detail kehadiran pemustaka |
+| `DELETE` | `/pengunjung/{pengunjung}` | `pengunjung.destroy` | `PengunjungController@destroy` | Hapus catatan log pengunjung |
 
 ---
 
