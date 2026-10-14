@@ -11,10 +11,17 @@
             <p class="text-muted small mb-0">Kelola kelompok klasifikasi dan pengelompokan buku di perpustakaan.</p>
         </div>
         <div>
-            <a href="{{ route('kategori.create') }}" class="btn btn-del shadow-sm d-inline-flex align-items-center gap-2">
-                <i class="bi bi-plus-lg"></i>
-                <span>Tambah Kategori</span>
-            </a>
+            @auth
+                <a href="{{ route('kategori.create') }}" class="btn btn-app shadow-sm d-inline-flex align-items-center gap-2">
+                    <i class="bi bi-plus-lg"></i>
+                    <span>Tambah Kategori</span>
+                </a>
+            @else
+                <a href="{{ route('login') }}" class="btn btn-outline-secondary d-inline-flex align-items-center gap-2">
+                    <i class="bi bi-shield-lock"></i>
+                    <span>Login Pustakawan</span>
+                </a>
+            @endauth
         </div>
     </div>
 
@@ -55,16 +62,18 @@
                                     <a href="{{ route('kategori.show', $kategori) }}" class="btn btn-sm btn-light border text-info" title="Lihat Detail">
                                         <i class="bi bi-eye"></i>
                                     </a>
-                                    <a href="{{ route('kategori.edit', $kategori) }}" class="btn btn-sm btn-light border text-warning" title="Edit Kategori">
-                                        <i class="bi bi-pencil"></i>
-                                    </a>
-                                    <form action="{{ route('kategori.destroy', $kategori) }}" method="POST" class="d-inline" onsubmit="return confirm('Menghapus kategori ini akan menghapus semua buku di dalamnya. Yakin?')">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-light border text-danger" title="Hapus Kategori">
-                                            <i class="bi bi-trash"></i>
-                                        </button>
-                                    </form>
+                                    @auth
+                                        <a href="{{ route('kategori.edit', $kategori) }}" class="btn btn-sm btn-light border text-warning" title="Edit Kategori">
+                                            <i class="bi bi-pencil"></i>
+                                        </a>
+                                        <form action="{{ route('kategori.destroy', $kategori) }}" method="POST" class="d-inline" onsubmit="return confirm('Menghapus kategori ini akan menghapus semua buku di dalamnya. Yakin?')">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-sm btn-light border text-danger" title="Hapus Kategori">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </form>
+                                    @endauth
                                 </div>
                             </td>
                         </tr>

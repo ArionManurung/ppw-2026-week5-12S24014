@@ -11,10 +11,17 @@
             <p class="text-muted small mb-0">Kelola katalog inventaris, rekapitulasi data agregat Query Builder, serta sirkulasi peminjaman buku.</p>
         </div>
         <div>
-            <a href="{{ route('buku.create') }}" class="btn btn-app shadow-sm d-inline-flex align-items-center gap-2">
-                <i class="bi bi-plus-lg"></i>
-                <span>Tambah Buku Baru</span>
-            </a>
+            @auth
+                <a href="{{ route('buku.create') }}" class="btn btn-app shadow-sm d-inline-flex align-items-center gap-2">
+                    <i class="bi bi-plus-lg"></i>
+                    <span>Tambah Buku Baru</span>
+                </a>
+            @else
+                <a href="{{ route('login') }}" class="btn btn-outline-secondary d-inline-flex align-items-center gap-2">
+                    <i class="bi bi-shield-lock"></i>
+                    <span>Login Pustakawan</span>
+                </a>
+            @endauth
         </div>
     </div>
 
@@ -194,16 +201,18 @@
                                     <a href="{{ route('buku.show', $buku) }}" class="btn btn-sm btn-light border text-info" title="Lihat Detail">
                                         <i class="bi bi-eye"></i>
                                     </a>
-                                    <a href="{{ route('buku.edit', $buku) }}" class="btn btn-sm btn-light border text-warning" title="Edit Buku">
-                                        <i class="bi bi-pencil"></i>
-                                    </a>
-                                    <form action="{{ route('buku.destroy', $buku) }}" method="POST" class="d-inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus buku ini?')">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-light border text-danger" title="Hapus Buku">
-                                            <i class="bi bi-trash"></i>
-                                        </button>
-                                    </form>
+                                    @auth
+                                        <a href="{{ route('buku.edit', $buku) }}" class="btn btn-sm btn-light border text-warning" title="Edit Buku">
+                                            <i class="bi bi-pencil"></i>
+                                        </a>
+                                        <form action="{{ route('buku.destroy', $buku) }}" method="POST" class="d-inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus buku ini?')">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-sm btn-light border text-danger" title="Hapus Buku">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </form>
+                                    @endauth
                                 </div>
                             </td>
                         </tr>

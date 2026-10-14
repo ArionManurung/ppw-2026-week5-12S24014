@@ -68,16 +68,18 @@
                                         <i class="bi bi-x-circle me-1"></i> Stok Habis (Tidak Dapat Dipinjam)
                                     </button>
                                 @endif
-                                <a href="{{ route('buku.edit', $buku) }}" class="btn btn-warning text-dark fw-semibold rounded-pill">
-                                    <i class="bi bi-pencil me-1"></i> Edit Data Buku
-                                </a>
-                                <form action="{{ route('buku.destroy', $buku) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus buku ini?')">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-outline-danger rounded-pill w-100">
-                                        <i class="bi bi-trash me-1"></i> Hapus Buku
-                                    </button>
-                                </form>
+                                @auth
+                                    <a href="{{ route('buku.edit', $buku) }}" class="btn btn-warning text-dark fw-semibold rounded-pill">
+                                        <i class="bi bi-pencil me-1"></i> Edit Data Buku
+                                    </a>
+                                    <form action="{{ route('buku.destroy', $buku) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus buku ini?')">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-outline-danger rounded-pill w-100">
+                                            <i class="bi bi-trash me-1"></i> Hapus Buku
+                                        </button>
+                                    </form>
+                                @endauth
                                 <a href="{{ route('buku.index') }}" class="btn btn-outline-secondary rounded-pill">
                                     <i class="bi bi-arrow-left me-1"></i> Kembali ke Katalog
                                 </a>

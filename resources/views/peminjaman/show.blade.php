@@ -26,12 +26,18 @@
                         </div>
                         <div>
                             @if($peminjaman->status === 'dipinjam')
-                                <form action="{{ route('peminjaman.kembali', $peminjaman->id) }}" method="POST" onsubmit="return confirm('Konfirmasi pengembalian buku ini?')">
-                                    @csrf
-                                    <button type="submit" class="btn btn-sm btn-success fw-semibold shadow-sm">
-                                        <i class="bi bi-arrow-return-left me-1"></i> Kembalikan Sekarang
-                                    </button>
-                                </form>
+                                @auth
+                                    <form action="{{ route('peminjaman.kembali', $peminjaman->id) }}" method="POST" onsubmit="return confirm('Konfirmasi pengembalian buku ini?')">
+                                        @csrf
+                                        <button type="submit" class="btn btn-sm btn-success fw-semibold shadow-sm">
+                                            <i class="bi bi-arrow-return-left me-1"></i> Kembalikan Sekarang
+                                        </button>
+                                    </form>
+                                @else
+                                    <a href="{{ route('login') }}" class="btn btn-sm btn-outline-primary">
+                                        <i class="bi bi-lock me-1"></i> Login untuk Mengembalikan
+                                    </a>
+                                @endauth
                             @else
                                 <span class="badge bg-success text-white px-3 py-2 rounded-pill">Selesai</span>
                             @endif

@@ -292,6 +292,40 @@
                             <span>Buku Tamu</span>
                         </a>
                     </li>
+                    @auth
+                        <li class="nav-item dropdown ms-lg-3 mt-2 mt-lg-0">
+                            <a class="nav-link dropdown-toggle text-white d-inline-flex align-items-center gap-2 py-1 px-3 rounded-pill bg-dark border border-secondary" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-person-circle text-primary"></i>
+                                <span class="fw-semibold small">{{ Auth::user()->name }}</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 rounded-3 mt-2">
+                                <li class="px-3 py-2 border-bottom">
+                                    <div class="fw-bold small text-dark">{{ Auth::user()->name }}</div>
+                                    <div class="text-muted small">{{ Auth::user()->email }}</div>
+                                    @if(session('login_timestamp'))
+                                        <div class="text-muted" style="font-size: 0.725rem;">
+                                            <i class="bi bi-clock me-1"></i> Sesi: {{ session('login_timestamp') }}
+                                        </div>
+                                    @endif
+                                </li>
+                                <li>
+                                    <form action="{{ route('logout') }}" method="POST" class="p-1">
+                                        @csrf
+                                        <button type="submit" class="dropdown-item text-danger rounded-2 d-flex align-items-center gap-2 small">
+                                            <i class="bi bi-box-arrow-right"></i> Keluar (Logout)
+                                        </button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                    @else
+                        <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+                            <a href="{{ route('login') }}" class="btn btn-sm btn-outline-light d-inline-flex align-items-center gap-1 rounded-pill px-3">
+                                <i class="bi bi-box-arrow-in-right"></i>
+                                <span>Login Pustakawan</span>
+                            </a>
+                        </li>
+                    @endauth
                 </ul>
             </div>
         </div>

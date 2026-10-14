@@ -11,10 +11,17 @@
             <p class="text-muted small mb-0">Pantau transaksi peminjaman, pengembalian, status jatuh tempo, serta histori pemustaka secara atomik.</p>
         </div>
         <div>
-            <a href="{{ route('peminjaman.create') }}" class="btn btn-app shadow-sm d-inline-flex align-items-center gap-2">
-                <i class="bi bi-plus-lg"></i>
-                <span>Catat Peminjaman Baru</span>
-            </a>
+            @auth
+                <a href="{{ route('peminjaman.create') }}" class="btn btn-app shadow-sm d-inline-flex align-items-center gap-2">
+                    <i class="bi bi-plus-lg"></i>
+                    <span>Catat Peminjaman Baru</span>
+                </a>
+            @else
+                <a href="{{ route('login') }}" class="btn btn-outline-secondary d-inline-flex align-items-center gap-2">
+                    <i class="bi bi-shield-lock"></i>
+                    <span>Login Pustakawan</span>
+                </a>
+            @endauth
         </div>
     </div>
 
@@ -114,14 +121,16 @@
                                         <i class="bi bi-eye"></i>
                                     </a>
 
-                                    @if($item->status === 'dipinjam')
-                                        <form action="{{ route('peminjaman.kembali', $item->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Konfirmasi pengembalian buku {{ $item->buku->judul }} oleh {{ $item->nama_peminjam }}? Stok akan bertambah secara atomik.')">
-                                            @csrf
-                                            <button type="submit" class="btn btn-sm btn-light border text-success fw-semibold" title="Proses Pengembalian">
-                                                <i class="bi bi-arrow-return-left"></i> Kembali
-                                            </button>
-                                        </form>
-                                    @endif
+                                    @auth
+                                        @if($item->status === 'dipinjam')
+                                            <form action="{{ route('peminjaman.kembali', $item->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Konfirmasi pengembalian buku {{ $item->buku->judul }} oleh {{ $item->nama_peminjam }}? Stok akan bertambah secara atomik.')">
+                                                @csrf
+                                                <button type="submit" class="btn btn-sm btn-light border text-success fw-semibold" title="Proses Pengembalian">
+                                                    <i class="bi bi-arrow-return-left"></i> Kembali
+                                                </button>
+                                            </form>
+                                        @endif
+                                    @endauth
                                 </div>
                             </td>
                         </tr>
