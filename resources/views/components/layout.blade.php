@@ -277,6 +277,11 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link nav-link-app {{ request()->routeIs('peminjaman.*') ? 'active' : '' }}" href="{{ route('peminjaman.index') }}">
+                            <i class="bi bi-arrow-repeat me-1"></i> Sirkulasi
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link nav-link-app {{ request()->routeIs('pengunjung.*') ? 'active' : '' }}" href="{{ route('pengunjung.index') }}">
                             <i class="bi bi-person-lines-fill me-1"></i> Log Pengunjung
                         </a>

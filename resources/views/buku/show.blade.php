@@ -59,6 +59,15 @@
                             </div>
 
                             <div class="d-grid gap-2">
+                                @if($buku->stok > 0)
+                                    <a href="{{ route('peminjaman.create', ['buku_id' => $buku->id]) }}" class="btn btn-app fw-semibold rounded-pill">
+                                        <i class="bi bi-journal-plus me-1"></i> Pinjam Buku Ini
+                                    </a>
+                                @else
+                                    <button class="btn btn-secondary rounded-pill" disabled>
+                                        <i class="bi bi-x-circle me-1"></i> Stok Habis (Tidak Dapat Dipinjam)
+                                    </button>
+                                @endif
                                 <a href="{{ route('buku.edit', $buku) }}" class="btn btn-warning text-dark fw-semibold rounded-pill">
                                     <i class="bi bi-pencil me-1"></i> Edit Data Buku
                                 </a>
