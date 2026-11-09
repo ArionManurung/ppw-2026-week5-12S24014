@@ -6,6 +6,11 @@ use App\Http\Controllers\BukuController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\PengunjungController;
 use App\Http\Controllers\PeminjamanController;
+use App\Http\Controllers\Soap\LibrarySoapController;
+
+// Layanan SOAP Legacy (Bebas Pustaka Yudisium)
+Route::get('/soap/sipus.wsdl', [LibrarySoapController::class, 'wsdl']);
+Route::post('/soap/sipus', [LibrarySoapController::class, 'handle']);
 
 // Rute Publik (Read-Only)
 Route::get('/', fn() => redirect()->route('buku.index'));
