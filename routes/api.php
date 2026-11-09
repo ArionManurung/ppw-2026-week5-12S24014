@@ -11,9 +11,10 @@ Route::prefix('v1')->group(function () {
     // =========================================================================
     Route::post('/auth/login', [AuthTokenController::class, 'login']);
 
-    // Katalog Buku Publik
+    // Katalog Buku Publik & External REST API Consumer
     Route::get('/bukus', [BukuApiController::class, 'index']);
     Route::get('/bukus/{id}', [BukuApiController::class, 'show']);
+    Route::get('/bukus/{id}/referensi-eksternal', [BukuApiController::class, 'referensiEksternal']);
 
     // =========================================================================
     // 2. ENDPOINT TERPROTEKSI STATELESS BEARER TOKEN (Wajib auth:sanctum)
